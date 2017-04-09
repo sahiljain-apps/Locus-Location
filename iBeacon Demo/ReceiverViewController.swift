@@ -18,6 +18,7 @@ class ReceiverViewController: UIViewController
 
 {
     var boolean = true
+    var initial = true
     
     @IBOutlet fileprivate weak var tableView: UITableView!
     fileprivate weak var refreshControl: UIRefreshControl?
@@ -64,12 +65,16 @@ class ReceiverViewController: UIViewController
     
     func writeData(x: Int) {
         let input = x
-        let ref = FIRDatabase.database().reference(fromURL: "https://beacon-5cac4.firebaseio.com/")
         
+        if (input == 1) {
+        
+            if (initial == true || boolean == true) {
+                let ref = FIRDatabase.database().reference(fromURL: "https://beacon-5cac4.firebaseio.com/")
+
         ref.child("beacons").observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
             let value = snapshot.value as? NSDictionary
-            var b = (value?.value(forKey: "F4:5E:AB:27:4E:D2"))
+            let b = (value?.value(forKey: "F4:5E:AB:27:4E:D2"))
             var j: Int = b as! Int
             j = j+1
             
@@ -80,6 +85,37 @@ class ReceiverViewController: UIViewController
         }) { (error) in
             print(error.localizedDescription)
         }
+                
+                boolean = false
+                initial = false
+        }
+    }
+        else if (input == -1) {
+            
+            if (initial == true || boolean == false) {
+                let ref = FIRDatabase.database().reference(fromURL: "https://beacon-5cac4.firebaseio.com/")
+
+            
+            ref.child("beacons").observeSingleEvent(of: .value, with: { (snapshot) in
+                // Get user value
+                let value = snapshot.value as? NSDictionary
+                var b = (value?.value(forKey: "F4:5E:AB:27:4E:D2"))
+                var j: Int = b as! Int
+                if (j>=1) {
+                j = j-1
+                }
+                
+                ref.child("beacons").updateChildValues(["F4:5E:AB:27:4E:D2": j])
+                
+                
+                // ...
+            }) { (error) in
+                print(error.localizedDescription)
+            }
+                initial = false
+                boolean = true
+        }
+        }
 
         
 
@@ -87,10 +123,6 @@ class ReceiverViewController: UIViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        getData()
-        
-
-        
         self.navigationController?.navigationBar.barTintColor = UIColor.iOS7BlueColor()
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         
@@ -285,7 +317,8 @@ extension ReceiverViewController: CLLocationManagerDelegate
                 }
                 ind = ind + 1
             }
-            manager.stopRangingBeacons(in: region)
+            // Done rn
+//            manager.stopRangingBeacons(in: region)
             
             var bb = "\(z)"
 
@@ -298,18 +331,19 @@ extension ReceiverViewController: CLLocationManagerDelegate
             print(val)
             
             if val > 1.6 {
-                writeData(x: 1)
+                writeData(x: -1)
             }
             else {
-                writeData(x: -1)
+                writeData(x: 1)
             }
         
         }
 
             
         }
-        
+        //Done rn
 //        manager.stopRangingBeacons(in: region)
+        //Lol
         self.refreshControl?.endRefreshing()
         
         

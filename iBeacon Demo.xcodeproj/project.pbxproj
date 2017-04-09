@@ -20,6 +20,7 @@
 		55E9DE301A982DBE002AD99C /* UINavigationControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E9DE2D1A982DBE002AD99C /* UINavigationControllerExtension.swift */; };
 		55E9DE311A982DBE002AD99C /* UITabBarControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E9DE2E1A982DBE002AD99C /* UITabBarControllerExtension.swift */; };
 		E5BAAF2D1E99AACC00AAB808 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E5BAAF2C1E99AACC00AAB808 /* GoogleService-Info.plist */; };
+		E5BAAF2F1E99F22B00AAB808 /* WaitingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BAAF2E1E99F22B00AAB808 /* WaitingViewController.swift */; };
 		FA3C94AE354921D04E54A899 /* Pods_iBeacon_Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40A705C7C6D63B501FBE5BD6 /* Pods_iBeacon_Demo.framework */; };
 /* End PBXBuildFile section */
 
@@ -44,6 +45,7 @@
 		55E9DE2D1A982DBE002AD99C /* UINavigationControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINavigationControllerExtension.swift; sourceTree = "<group>"; };
 		55E9DE2E1A982DBE002AD99C /* UITabBarControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITabBarControllerExtension.swift; sourceTree = "<group>"; };
 		E5BAAF2C1E99AACC00AAB808 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E5BAAF2E1E99F22B00AAB808 /* WaitingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaitingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +97,7 @@
 			children = (
 				55E9DE2B1A982DBE002AD99C /* Extensions */,
 				522CD5861A7CB0EC00DBA5AD /* AppDelegate.swift */,
+				E5BAAF2E1E99F22B00AAB808 /* WaitingViewController.swift */,
 				5249F70D1A8DD26D003C68AE /* Configuration.swift */,
 				522CD5AA1A7CB26600DBA5AD /* BroadcastViewController.swift */,
 				522CD5AC1A7CB2A400DBA5AD /* ReceiverViewController.swift */,
@@ -282,6 +285,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5BAAF2F1E99F22B00AAB808 /* WaitingViewController.swift in Sources */,
 				522CD5AB1A7CB26600DBA5AD /* BroadcastViewController.swift in Sources */,
 				5249F70E1A8DD26D003C68AE /* Configuration.swift in Sources */,
 				55E9DE311A982DBE002AD99C /* UITabBarControllerExtension.swift in Sources */,
