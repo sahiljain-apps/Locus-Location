@@ -13,6 +13,9 @@ import Dispatch
 
 class WaitingViewController: UIViewController {
 
+    var carljr = ""
+    @IBOutlet weak var Carls: UILabel!
+    @IBOutlet weak var movieLabel: UILabel!
     @IBOutlet weak var refreshButton: UIButton!
     var hello = ""
     var bye = ""
@@ -50,6 +53,7 @@ class WaitingViewController: UIViewController {
                     
                     var movieTimes = waitTimeArray["F4:5E:AB:70:43:9F"] as! Double
                     
+                    var carlTimes = waitTimeArray["F4:5E:AB:27:53:2C"] as! Double
                     
                     var waitTimes = waitTimeArray["F4:5E:AB:27:4E:D2"] as! Double
                     let beaconArray = parsedData["beacons"] as! [String:Any]
@@ -57,6 +61,10 @@ class WaitingViewController: UIViewController {
                     let beacon = beaconArray["F4:5E:AB:27:4E:D2"] as! Double!
                     
                     let beacon1 = beaconArray["F4:5E:AB:70:43:9F"] as! Double
+                    
+                    let beacon2 = beaconArray["F4:5E:AB:27:53:2C"] as! Double
+                    
+                    self.carljr = "\(carlTimes * beacon2)"
 
                     
                     waitTimes = waitTimes * beacon!
@@ -68,6 +76,7 @@ class WaitingViewController: UIViewController {
                     DispatchQueue.main.async {
                         self.updateLabel(x: self.hello)
                         self.updateL(x: self.bye)
+                        self.Carls.text = self.carljr + " Minutes"
                     }
 
 
@@ -84,7 +93,6 @@ class WaitingViewController: UIViewController {
 
     }
     
-    @IBOutlet weak var movieLabel: UILabel!
     func updateLabel(x: String) {
         self.DMVLabel.text = x + " Minutes"
     }

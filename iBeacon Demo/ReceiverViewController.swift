@@ -225,8 +225,8 @@ extension ReceiverViewController: UITableViewDataSource, UITableViewDelegate
         
         let row: Int = indexPath.row
         let beacon: CLBeacon = self.beacons[row]
-        let detailText: String = "Major: " + "\(beacon.major)" + "\tMinor: " + "\(beacon.minor)"
-        let beaconUUID: String = beacon.proximityUUID.uuidString
+//        let detailText: String = "Major: " + "\(beacon.major)" + "\tMinor: " + "\(beacon.minor)"
+        let beaconUUID: String = "DMV Beacon"
         
         cell?.detailTextLabel?.text = beaconUUID
         
