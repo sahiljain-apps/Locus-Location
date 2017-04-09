@@ -167,6 +167,7 @@
                     <tabBarItem key="tabBarItem" title="Item" id="YNb-SR-o4p"/>
                     <connections>
                         <outlet property="DMVLabel" destination="tTY-fO-5nD" id="weI-US-Y0M"/>
+                        <outlet property="movieLabel" destination="XrH-sV-JED" id="Fci-9S-t5u"/>
                         <outlet property="refreshButton" destination="V4L-Zl-vNS" id="SmO-ZE-sxX"/>
                     </connections>
                 </viewController>

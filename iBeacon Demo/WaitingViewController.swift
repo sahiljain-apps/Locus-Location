@@ -15,7 +15,7 @@ class WaitingViewController: UIViewController {
 
     @IBOutlet weak var refreshButton: UIButton!
     var hello = ""
-    
+    var bye = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -48,17 +48,26 @@ class WaitingViewController: UIViewController {
                     let parsedData = try JSONSerialization.jsonObject(with: data!, options: []) as! [String:Any]
                     let waitTimeArray = parsedData["waittimes"] as! [String:Any]
                     
+                    var movieTimes = waitTimeArray["F4:5E:AB:70:43:9F"] as! Double
+                    
+                    
                     var waitTimes = waitTimeArray["F4:5E:AB:27:4E:D2"] as! Double
                     let beaconArray = parsedData["beacons"] as! [String:Any]
                     
-                    var beacon = beaconArray["F4:5E:AB:27:4E:D2"] as! Double!
+                    let beacon = beaconArray["F4:5E:AB:27:4E:D2"] as! Double!
+                    
+                    let beacon1 = beaconArray["F4:5E:AB:70:43:9F"] as! Double
+
                     
                     waitTimes = waitTimes * beacon!
+                    movieTimes = movieTimes * beacon1
                     
                     self.hello = "\(waitTimes)"
+                    self.bye = "\(movieTimes)"
                     
                     DispatchQueue.main.async {
                         self.updateLabel(x: self.hello)
+                        self.updateL(x: self.bye)
                     }
 
 
@@ -75,10 +84,15 @@ class WaitingViewController: UIViewController {
 
     }
     
+    @IBOutlet weak var movieLabel: UILabel!
     func updateLabel(x: String) {
         self.DMVLabel.text = x + " Minutes"
     }
     
+    func updateL(x: String) {
+        self.movieLabel.text = x + "Minutes"
+        
+    }
     func convertToDictionary(text: String) -> [String: Any]? {
         if let data = text.data(using: .utf8) {
             do {
